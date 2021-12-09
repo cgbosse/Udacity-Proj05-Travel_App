@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    flex: 2;
+}
+
+section {
+    max-width: 900px;
+    margin: 15px auto;
+}
+
+h1{
+    font-size: x-large;
+    font-weight: 700;
+    padding: 10px;
+
+}
+
+h2{
+    font-size: large;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.title {
+    text-align: center;
+    background-color: darkgray;
+}
+
+a {
+   color: white;
+   font-style: italic; 
+}
