@@ -1,23 +1,33 @@
 form {
-    border: 1px solid rgb(11, 96, 167);
-    border-radius: 10px;
-    padding: 40px;
+    width: 100%;
+    padding: 10px;
     background-color: rgb(11, 96, 167);
-    min-height: 300px;
+}
+
+form h3 {
+    color: white;;
 }
 
 input {
-    padding: 5px 20px;
-    width: 100%;
-    line-height: 16px;
-    margin: 10px 0;
-    color: white;
+    height: 20px;
+    padding: 5px;
+    width: 90%;
+    line-height: 12px;
+    margin: 5px 0px;
+    color: black;
+    border-radius: 5px;
+    font-size: 12px;
 }
 
 form input[type="submit"] { 
-    font-size: 16px;
-    background-color: tomato;
+    font-size: 12px;
+    background-color: green;
+    vertical-align: middle;
+    padding: 0px;
+}
 
+form div.flex_item_1 {
+    min-width: 20%;
 }
 
 form textarea { 
@@ -71,3 +81,93 @@ form textarea {
 }
 
 
+//------- NEW Project 05---- 
+
+.container {
+    display: grid;
+    grid-template-columns: 0% 20% 20% 10% 10% 10% 10% 10% 10% 0%;
+    grid-template-rows: auto auto auto auto auto auto; 
+    grid-template-areas: 
+          "borderL header header header header header header header header borderR"	
+          "borderL input input input input input input input input borderR"
+          "borderL trip trip trip trip trip trip trip trip borderR"
+          "borderL notes notes  notes  notes  notes  notes  notes  notes  borderR"
+          "borderL saved saved  saved  saved  saved  saved  saved  saved  borderR"
+          "borderL footer footer  footer  footer  footer  footer  footer  footer  borderR";
+  }
+
+  .sidebarL {
+      grid-area: borderL;
+  } 
+  .sidebarR {
+      grid-area: borderR;
+  } 
+  
+  .sec_header {
+      grid-area: header;
+      min-height: 75px;
+      background-color: black;
+  } 
+  
+  .sec_input {
+      grid-area: input;
+      min-height: 100px;
+      max-width: 100%;
+      padding: auto;
+  } 
+  
+  .sec_trip {
+      grid-area: trip;
+      min-height: 250px;
+  } 
+  
+  .sec_notes {
+      grid-area: notes;
+      min-height: 50px;
+      background-color: yellowgreen;
+  } 
+  
+  .sec_saved {
+      grid-area: saved;
+      min-height: 50px;
+  } 
+  
+  .sec_footer {
+      grid-area: footer;
+  } 
+  
+  .container_flex {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+  
+  .flex_item_1 {
+      flex-grow: 1;
+  }
+  
+  .flex_item_2 {
+      flex-grow: 2;
+  }
+
+.container_flex div.box {
+    width: 175px;
+}
+
+//development resets
+div {
+	border-style:dotted;
+	border: 1px;
+	border-color: red;
+}
+
+.sec_trip .image {
+    background-color: lightblue;
+}
+
+.weather_forecast {
+    border-style: dotted;
+    border-color: red;
+    height: auto;
+    margin-top: 5px;
+}

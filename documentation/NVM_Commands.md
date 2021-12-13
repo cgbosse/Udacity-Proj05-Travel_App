@@ -1,3 +1,14 @@
+# GIT Commands
+
+git branch
+
+git switch "branch name"
+
+git switch - (returns to the previous state of the branch)
+
+
+
+
 # NVM Commands of Use
 
 Source: < https://www.codegrepper.com/code-examples/shell/nvm+list+node+versions>
@@ -13,6 +24,7 @@ Selects the node version to use
 ```
 nvm use 6.9.2
 ```
+
 
 ## Endoflife NODE Version
 <https://endoflife.date/nodejs>

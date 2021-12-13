@@ -1,0 +1,25 @@
+{
+    "totalResultsCount":4509,
+    "geonames":[
+        {
+            "adminCode1":"16",
+            "lng":"13.41053",
+            "geonameId":2950159,
+            "toponymName":"Berlin",
+            "countryId":"2921044",
+            "fcl":"P",
+            "population":3426354,
+            "countryCode":"DE",
+            "name":"Berlin",
+            "fclName":"city, village,...",
+            "adminCodes1":{
+                "ISO3166_2":"BE"
+                },
+            "countryName":"Germany",
+            "fcodeName":"capital of a political entity",
+            "adminName1":"Berlin",
+            "lat":"52.52437",
+            "fcode":"PPLC"
+        }
+    ]
+}

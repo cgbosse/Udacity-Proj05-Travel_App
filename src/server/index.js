@@ -48,12 +48,48 @@ console.log(__dirname);
 
 const mockAPIResponse = require('./mockAPI.js');
 
+// ---------------------- ROUTES ----------------------
+
+app.get('/', function (req, res) {
+    //L2 Step 16
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
+})
+
+// designates what port the app will listen to for incoming requests
+app.listen(8081, function () {
+    console.log('Example app listening on port 8081!');
+    console.log(`Your API key is ${process.env.API_KEY}`);    
+})
+
+app.get('/test', function (req, res) {
+    res.send(mockAPIResponse)
+    console.log("Sending Response from Server /test")
+})
+
+app.get('/testApi', function (req, res) {
+    res.send(mockAPIResponse)
+    console.log("Sending Response from Server /testApi")
+})
+
+app.get('/textToAnalyze', function (req, res) {
+    res.send(apiResponseJson);
+    console.log("Sending Response from Server from textToAnalyze")    
+});
+
+app.get('/apiResponseJson', function (req, res) {
+    res.send(apiResponseJson);
+    console.log("Sending Response from Server /apiResponseJson with the meaningCloud response object.")    
+});
 
 // CB -- Create log of data for sending call to the API
+// ---------- POST method route ---------- 
 //---- App variable for data returned by the website app.
 
 let textToAnalyze = "";
 apiResponseJson = {};
+
+app.post('/textToAnalyze', formData);
 
 function formData (req, res) {
     console.log(":::::::::Step 02 :::::::::");
@@ -100,42 +136,5 @@ function formData (req, res) {
         console.log('error', error);
     }
 };
-
-// ---------------------- ROUTES ----------------------
-// designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!');
-    console.log(`Your API key is ${process.env.API_KEY}`);    
-})
-
-// ---------- Generic method route ---------- 
-app.get('/*', function (req, res) {
-    //L2 Step 16
-    res.sendFile('dist/index.html')
-    //res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-    console.log("Sending Response from Server /test")
-})
-
-app.get('/testApi', function (req, res) {
-    res.send(mockAPIResponse)
-    console.log("Sending Response from Server /testApi")
-})
-
-app.get('/textToAnalyze', function (req, res) {
-    res.send(apiResponseJson);
-    console.log("Sending Response from Server from textToAnalyze")    
-});
-
-app.get('/apiResponseJson', function (req, res) {
-    res.send(apiResponseJson);
-    console.log("Sending Response from Server /apiResponseJson with the meaningCloud response object.")    
-});
-
-// ---------- POST method route ---------- 
-app.post('/textToAnalyze', formData);
 
 

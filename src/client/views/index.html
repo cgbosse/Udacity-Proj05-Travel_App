@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
+        <title>Travel Planner</title>
         <link rel="stylesheet" href="/styles/resets.css">
         <link rel="stylesheet" href="/styles/base.css">
         <link rel="stylesheet" href="/styles/header.css">
@@ -10,106 +10,120 @@
         <link rel="stylesheet" href="/styles/footer.css">
     </head>
 
-    <body>
-
-        <header>
-            <div id="logo">
-                <h1>PROJECT-04</h1>
+    <main class="container">
+        <section class="sidebarL"> border left</section>
+        <section class="sec_header container_flex">
+            <div id="logo" class="flex_item_1">
+                <h1>TRAVEL PLANNER - PROJECT-05</h1>
             </div>
-            <div id="navigation">          
+            <div id="navigation" class="flex_item_1">          
                 <div class="inlineflexnav">
-                    <div class="inlineflexnavitem">
+                    <div class="flex_item_1">
                         <a href="https://www.udacity.com/">UDACITY</a>
                     </div>
-                    <div class="inlineflexnavitem">
+                    <div class="flex_item_1">
                         <a href="https://github.com/cgbosse/udaCfrontEndDev-proj4">Project GitHub Repository</a>
                     </div>        
                 </div>
             </div>
-        </header>
-        
-        <main>
-        <!-- Section Duplicated for testing the API Text Submission --> 
+        </section>
+        <section class="sec_input">
+            <form id ="input_form"  class="" onsubmit="return Client.handleSubmitApi(event)">
+                <div class="container_flex">    
+                    <div class="flex_item_1 box"> <h3>Origin</h3>
+                        <div class ="input_field">
+                            <input form="input_form" name="orig_city" value="" onblur="onBlur()" type="text" id="orig_city" placeholder="Enter city of origin">
+                        </div>
+                        <div class ="input_field">
+                            <input form="input_form" name="orig_country" value="" onblur="onBlur()" type="text" id="orig_country" placeholder="Enter country of origin">
+                        </div>
+                    </div>
+                    <div class="flex_item_1 box"> <h3>Destination</h3>
+                        <div class ="input_field">
+                            <input form="input_form" name="dest_city" value="" onblur="onBlur()" type="text" id="dest_city" placeholder="Enter city of destination">
+                        </div>
+                        <div class ="input_field">
+                            <input form="input_form" name="dest_country" value="" onblur="onBlur()" type="text" id="dest_country" placeholder="Enter country of destination">
+                        </div>
+                    </div>
+                    <div class="flex_item_1 box"> <h3>Dates & Days of Stay</h3>
+                        <div class ="flex_item_1 input_field">
+                                <input form="input_form" name="dep_date" value="" onblur="onBlur()" type="date" id="dep_date" placeholder="Enter departure">
+                        </div>
+                        <div class ="flex_item_1 input_field">
+                                <input type="number" name="dest_days" placeholder="Enter planned days">
+                        </div>
+                    </div>
+                    <div class="flex_item_1 box">  
 
-            <div>
-                <div class="title">
-                    <h1>
-                        Sentiment Analysis for Texts
-                    </h1>
+                    </div>
+                    <div class="flex_item_1 button"> 
+                        <input type="submit" name="" value="Save Trip" onclick="return Client.handleSubmitApi(event)" onsubmit="return Client.handleSubmitApi(event)">
+                    </div>
+                    
                 </div>
-                <div class="title">
-                    <h2>
-                        Using the MeaningCloud API
-                    </h2>
-                </div>
+            </form>
+       
+        </section>
+        <section class="sec_trip container_flex"> TRIP
+           <div class="flex_item_2 image"> 
+               IMAGE
             </div>
-            <section>
-                <form id ="input_form"  class="" onsubmit="return Client.handleSubmitApi(event)">
-                    <textarea id="textForApi" type="text" name="input" value="" onblur="onBlur()" placeholder="Text For Api Sentiment Analysis"  rows="25" form="input_form"></textarea>
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmitApi(event)" onsubmit="return Client.handleSubmitApi(event)">
-                </form>
-            </section>
-            <section class="results">
-                <h2>Form Results</h2>
-                <div class="resultsbox">
-                    <div class="resultsboxitem">
-                    Agreement:
-                    </div>
-                    <div id="agreement" class="resultsboxitemapi">
-                        --------------
-                    </div>
-                </div>
-                <div class="resultsbox">
-                    <div class="resultsboxitem">
-                    Subjectivity:
-                    </div>
-                    <div id="subjectivity" class="resultsboxitemapi">
-                        --------------
-                    </div>
-                </div>
-                <div class="resultsbox">
-                    <div class="resultsboxitem">
-                    Confidence:
-                    </div>
-                    <div id="confidence" class="resultsboxitemapi">
-                        --------------
-                    </div>
-                </div>
-                <div class="resultsbox">
-                    <div class="resultsboxitem">
-                    Irony:
-                    </div>
-                    <div id="irony" class="resultsboxitemapi">
-                        --------------
-                    </div>
-                </div>
-            </section>
-        </main>
-
-
-        <footer>
+           <div class="flex_item_1"> 
+               <h2>Trip to destination</h2>
+               <h3>27/07/2022 to 08/08/2022</h3>
+               <div class="weather_forecast">
+                    The weather for your trip will be......
+               </div>
+            </div>
+           <div class="flex_item_1"> Box 03</div>
+           <div class="flex_item_1"> Box 04</div>
+        </section>
+        <section class="sec_notes container_flex"> NOTES
+           <div class="flex_item_1"> Box 01</div>
+           <div class="flex_item_1"> Box 02</div>
+           <div class="flex_item_1"> Box 03</div>
+           <div class="flex_item_1"> Box 04</div>
+           <div class="flex_item_1"> Box 05</div>
+       </section>
+           <section class="sec_saved container_flex"> SAVED
+            <div class="flex_item_1"> Box 01</div>
+           <div class="flex_item_1"> Box 02</div>
+           <div class="flex_item_1"> Box 03</div>
+           <div class="flex_item_1"> Box 04</div>
+           <div class="flex_item_2"> Box 05</div>
+       </section>
+       <footer class="sec_footer">
             <div id="footertitle">    
                 <h2>Project Resources</h2>
             </div>
-            <div class="inlineflex">
-                
-                <div class="inlineflexitem">
+            <div class="container_flex">
+                <div class="flex_item_1">
                     <a href="https://github.com/">GitHub</a>
                 </div>
-                <div class="inlineflexitem">
-                    <a href="https://www.meaningcloud.com/">MeaningCloud</a>
+                <div class="flex_item_1">
+                    <a href="https://pixabay.com/">
+                        <img src="https://pixabay.com/static/img/public/leaderboard_b.png" alt="Pixabay" width="33%">
+                    </a>
                 </div>
-                <div class="inlineflexitem">
-                   <a href="https://webpack.js.org/">WEBPACK</a>
+                <div class="flex_item_1">
+                <a href="https://webpack.js.org/">WEBPACK</a>
                 </div>
-                <div class="inlineflexitem">
+                <div class="flex_item_1">
                     <a href="https://nodejs.org/">NODE.JS</a>
+                </div>
+                <div class="flex_item_1">
+                    <a href="https://github.com/">GitHub</a>
                 </div>        
-            </div> 
-        </footer>
+            </div>
+       </footer> 
+       <section class="sec_borderR"> border right </section>
+   </main>	 
+
 
         <!-- L2 Step 8 --> 
         <script type="text/javascript" src="../../../dist/main.js"></script>
+        <!--
         <script>
             // Check that service workers are supported
             if ('serviceWorker' in navigator) {
@@ -119,6 +133,7 @@
                 });
             }
         </script>
+        -->
 
     </body>
 </html>
