@@ -10,7 +10,11 @@ Your project will be evaluated by a Udacity code reviewer according to the Trave
 
 ### Get the Starter Code
 
-If you'd like to start from scratch without any files, you are encouraged to do so! You learn the most by developing on your own! But, it can be a bit challenging having to start from scratch. There’s not the standard starter code you’re used to. If you would like to start with starter code, duplicate your code from project 3 and start there. Here is just one possibility for the visual of this project. Of course, you can style it how you choose, and extending the project will dictate the final appearance.
+If you'd like to start from scratch without any files, you are encouraged to do so! You learn the most by developing on your own! But, it can be a bit challenging having to start from scratch.  
+
+There’s not the standard starter code you’re used to. If you would like to start with starter code, duplicate your code from project 3 and start there.  
+
+Here is just one possibility for the visual of this project. Of course, you can style it how you choose, and extending the project will dictate the final appearance.
 
 An example Travel App, both at minimum and with additional functionality
 
@@ -44,7 +48,7 @@ Feel free to implement your own design workflow, but if you get stuck -- here is
 
 1. *Start by duplicating your project 3 weather app.* Once duplicated, change the new project’s name to make certain you're not overwriting your old project. We are going to build off this project as a foundation.
 
-2. *Get webpack set up to work with this project.* Use the skills you learned in project 4 to get your development environment going. 
+2. *Get webpack set up to work with this project.* Use the skills you learned in project 4 to get your development environment going.
   
     - Create your src folder first. The src folder should contain a client folder and a server folder.
     - Your server folder should contain your server.js content.
@@ -83,14 +87,14 @@ Feel free to implement your own design workflow, but if you get stuck -- here is
     - What Parameters will you want to set to pull in images?
     - How will you submit your data from the location field to a Pixabay URL parameter without having spaces in the url?
 10. *Choose one of the items from the suggested list to add in.*  
- The items vary in complexity, but you must choose at least 1, all others are optional.
+ The items vary in complexity, but you must choose at least 1, all others are optional.  
 11. *REFACTOR.*  
 At this point, your code should be working properly. Ideally, refactoring happens while you are developing, but as a new developer, you often don’t have the whole picture in your head to be able to do so properly. Let’s clean the project up.
     - Have you run your code through a linter? We request you still follow Udacity standards when the code is complete, but running it through an eslinter is going to help you get started in refactoring.
     - Are you using ES6 const and let?
     - Are all your functions using ES6 arrow functions?
     - Is your code DRY? Are there any pieces that would be better served as a helper function to avoid duplication?
-    - How is your code structured? 
+    - How is your code structured?
     - Have you created functions for the main functionality with properly scoped variables? Starting out it’s likely that you will have a globally scoped variables on occasion until you learn more about closures and design patterns. But placing your code into functions is a great way to make your code more readable and a way to avoid globally scoped variables.
     - Are your project files named in a way that makes sense?
     - Add in services workers. Refer to project 4 for guidance.  

@@ -82,6 +82,7 @@ app.get('/apiResponseJson', function (req, res) {
     console.log("Sending Response from Server /apiResponseJson with the meaningCloud response object.")    
 });
 
+
 // CB -- Create log of data for sending call to the API
 // ---------- POST method route ---------- 
 //---- App variable for data returned by the website app.
@@ -135,6 +136,207 @@ function formData (req, res) {
     catch(error) {
         console.log('error', error);
     }
+};
+
+
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ---------------------- Proj 05 ROUTES ----------------------
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// Route to test the apicalls route
+app.get('/apiCalls', function (req, res) {
+    res.send(geonameJson);
+    console.log("Sending Response from Server with the apiCalls - geonameJson")    
+});
+
+app.get('/combinedApiResponseJSON', function (req, res) {
+    res.send(combinedApiResponseJSON);
+    console.log("Sending Response from Server with the combinedApiResponseJSON object.")    
+});
+
+// PROJ 05---------- POST method route ---------- 
+app.post('/apiCalls', apiCalls);
+
+// Proj 05 Code
+// :::::::::::::::::: API CALL FUNCTIONS :::::::::::::::::::::::
+
+// Setup empty JS objects to act storage variables for the original JSON responses
+let geonameJson = {};
+let weatherbitJson = {};
+let pixabayJson = {};
+
+// Setup empty object to store the information bits posted and passed back to the client side
+combinedApiResponseJSON = {};
+
+// --------------------------------GEONAME-------------------------------------
+
+let geonameURL ='http://api.geonames.org/searchJSON?q=';
+
+let geonameAPI= async function(city) { 
+
+    // geoname API function variables
+    console.log(":::::::: Step 03.1  ::::::::");
+    let formDestCity = city;
+    let jsonRows = '&maxRows=1';
+    let userName = '&username=' + process.env.GEONAME_API_KEY;
+    geonameURL = geonameURL+formDestCity+jsonRows+userName;
+
+    console.log(":::::::: Step 03.2  ::::::::");
+    console.log(geonameURL);
+    
+    const res = await fetch(geonameURL);
+        
+    console.log(' ::::::: geonameAPI - Response object: ' + res);
+    
+    // 2. Extract the temperature from the obtained json object
+    try {
+        let apiData = await res.json();
+        
+        geonameJson = apiData;
+        
+        // create variables to extract the necessary data from the API response
+        let longitude = apiData.geonames[0].lng;
+        let latitude = apiData.geonames[0].lat;
+
+        // adding these two information bits to the combined response Json
+        combinedApiResponseJSON.longitude = longitude;
+        combinedApiResponseJSON.latitude = latitude;
+        console.log("::: geoname response longitude:" + longitude);
+        console.log("::: geoname response latitude:" + latitude);
+        console.log(":::: combinedApiResponseJSON with longitude and latitude: " + combinedApiResponseJSON );
+        
+        return combinedApiResponseJSON
+    }  catch(error) {
+    // appropriately handle the error
+    console.log("error", error);
+    }
+};
+
+// --------------------------------WEATHERBIT-------------------------------------
+
+// ----------- Current Weather --------------
+
+let weatherbitAPIcur= async function(comboJSON) { 
+    
+    console.log(":::::::: Step 04  ::::::::");
+
+    // Assembling the Weatherbit URL using the longitude and latitude
+    console.log(":::::::: Step 04.1  ::::::::");
+    let lat = comboJSON.latitude;
+    let lng = comboJSON.longitude;
+    
+    let wbBaseURL = "https://api.weatherbit.io/v2.0/current?"  
+    let weatherbitURLcur = wbBaseURL + "lat=" + lat +"&lon=" + lng + "&key=" + process.env.WEATHERBIT_API_KEY;
+
+    console.log(":::::::: Step 04.2  ::::::::");
+    console.log(weatherbitURLcur);
+
+    const res = await fetch(weatherbitURLcur);
+        
+    console.log(' ::::::: weatherbitAPI - Response object: ' + res);
+    
+    try {
+        let apiData = await res.json();
+
+        combinedApiResponseJSON.weather_cur = apiData;
+
+        console.log("The current weather is: " + combinedApiResponseJSON.weather_cur.data[0].weather.description);
+        console.log(":::: combinedApiResponseJSON with current Weather data: " + combinedApiResponseJSON);
+
+        return combinedApiResponseJSON
+
+    }  catch(error) {
+    // appropriately handle the error
+    console.log("error", error);
+    }
+};
+
+//-------------- Weather Forecast 16 Days --------------
+
+let weatherbitAPIfor= async function(comboJSON) { 
+    
+    console.log(":::::::: Step 05  ::::::::");
+
+    // Assembling the Weatherbit URL using the longitude and latitude
+    console.log(":::::::: Step 05.1  ::::::::");
+    let lat = comboJSON.latitude;
+    let lng = comboJSON.longitude;
+    
+    let wbBaseURL = "https://api.weatherbit.io/v2.0/forecast/daily?"  
+    let weatherbitURLfor = wbBaseURL + "lat=" + lat +"&lon=" + lng + "&key=" + process.env.WEATHERBIT_API_KEY;
+
+    console.log(":::::::: Step 05.2  ::::::::");
+    console.log(weatherbitURLfor);
+
+    const res = await fetch(weatherbitURLfor);
+        
+    console.log(' ::::::: weatherbitAPI Forecast - Response object: ' + res);
+    
+    try {
+        let apiData = await res.json();
+
+        combinedApiResponseJSON.weather_for = apiData;
+
+        console.log("The future weather is: " + combinedApiResponseJSON.weather_for.data[1].valid_date);
+        console.log(":::: combinedApiResponseJSON with current Weather data: " + combinedApiResponseJSON);
+
+        return combinedApiResponseJSON
+
+    }  catch(error) {
+    // appropriately handle the error
+    console.log("error", error);
+    }
+};
+
+
+
+// Create a new date instance dynamically with JS
+let d = new Date();
+let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
+
+
+// --------------------------------PIXABAY-------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// --------------------------------APIC CALLS Sequence function caller-------------------------------------
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+function apiCalls (req, res) {
+
+    console.log(":::::::: Step 02  ::::::::");
+    console.log(":::::::: apiCalls ::::::::");
+    console.log("Received Request Body: " + req.body);
+    
+    //Received object assigning to the 
+    combinedApiResponseJSON = req.body;
+
+    // Assigning variables for each of the data elements required for the various API calls
+    let destCityFD = combinedApiResponseJSON.destCity;
+    let depDateFD = combinedApiResponseJSON.depDate;
+    let destDaysFD = combinedApiResponseJSON.destDays;
+    console.log("combinedApiResponseJSON: " + destCityFD);
+    
+    console.log(":::::::: Empty geoname URL :::::::::::");
+    console.log(geonameURL);
+
+    // API call Functions sequence
+    geonameAPI(destCityFD)
+        .then(result => weatherbitAPIcur(result))
+        .then(result => weatherbitAPIfor(result))
+        .then(result => res.send(result))
+       
 };
 
 

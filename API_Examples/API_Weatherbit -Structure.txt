@@ -1,0 +1,37 @@
+Current Weather
+-----------------------------
+https://api.weatherbit.io/v2.0/current?lat=35.7796&lon=-78.6382&key=788852069f384e4db4f66dd6de44a2f9
+-----------------------------
+.data[0].weather.description
+.data[0].uv
+.data[0].precipitation
+.data[0].sunrise
+.data[0].sunset
+.data[0].temp
+
+Weather Forecast
+-----------------
+https://api.weatherbit.io/v2.0/forecast/daily?lat=35.7796&lon=-78.6382&key=788852069f384e4db4f66dd6de44a2f9
+-----------------
+
+.data[0 to 15].valid_date
+.data[0 to 15].high_temp
+.data[0 to 15].low_temp
+.data[0 to 15].app_max_temp
+.data[0 to 15].app_min_temp
+
+// Accumulated snowfall (default mm)
+.data[0 to 15].snow
+
+//possibility of rain and mm
+.data[0 to 15].pop
+.data[0 to 15].precip
+
+//Maximum UV Index (0-11+)
+.data[0 to 15].uv
+
+//Text weather description
+.data[0 to 15].weather.description
+
+//Average relative humidity (%)
+.data[0 to 15].rh
