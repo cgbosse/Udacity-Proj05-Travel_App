@@ -299,15 +299,40 @@ let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
 // --------------------------------PIXABAY-------------------------------------
 
 
+let pixabayAPI= async function(comboJSON) { 
+    
+    console.log(":::::::: Step 06  ::::::::");
 
+    // Assembling the Weatherbit URL using the longitude and latitude
+    console.log(":::::::: Step 06.1  ::::::::");
+    let destCity = comboJSON.destCity;
+    let destCountry = comboJSON.destCountry;
+            
+    let pbBaseURL = "https://pixabay.com/api/?key="  
+    let pixabayURL = pbBaseURL + process.env.PIXABAY_API_KEY + "&q=" + destCity + "+" + destCountry + "&image_type=photo" + "&orientation=horizontal" + "&category=travel" + "&min_width=600" + "&min_height=600" + "&order=popular" + "&per_page=3";
 
+    console.log(":::::::: Step 06.2  ::::::::");
+    console.log(pixabayURL);
 
+    const res = await fetch(pixabayURL);
+        
+    console.log(' ::::::: pixabayAPI image query - Response object: ' + res);
+    
+    try {
+        let apiData = await res.json();
 
+        combinedApiResponseJSON.images = apiData;
 
+        console.log("One possible pixabay image is: " + combinedApiResponseJSON.images.hits[0].largeImageURL);
+        console.log(":::: combinedApiResponseJSON with pixabay data: " + combinedApiResponseJSON);
 
+        return combinedApiResponseJSON
 
-
-
+    }  catch(error) {
+    // appropriately handle the error
+    console.log("error", error);
+    }
+};
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // --------------------------------APIC CALLS Sequence function caller-------------------------------------
@@ -335,8 +360,9 @@ function apiCalls (req, res) {
     geonameAPI(destCityFD)
         .then(result => weatherbitAPIcur(result))
         .then(result => weatherbitAPIfor(result))
+        .then(result => pixabayAPI(result))
         .then(result => res.send(result))
-       
+               
 };
 
 
