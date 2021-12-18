@@ -1,7 +1,6 @@
 
 footer {
     text-align: center;
-    vertical-align: middle;
     padding: 5px;
     background-color: black;
     color: white;
@@ -11,4 +10,11 @@ footer {
 #footertitle{
     padding: auto;
     margin: auto;
+}
+
+footer div.flex_item_1 {
+    display: block;
+    padding: 5px;
+    height: 30px;
+    min-width: 100px;
 }

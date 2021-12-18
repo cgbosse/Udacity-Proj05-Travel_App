@@ -9,8 +9,8 @@ form h3 {
 }
 
 input {
-    height: 20px;
-    padding: 5px;
+    height: 25px;
+    padding: 10px;
     width: 90%;
     line-height: 12px;
     margin: 5px 0px;
@@ -20,10 +20,10 @@ input {
 }
 
 form input[type="submit"] { 
-    font-size: 12px;
-    background-color: green;
+    width: 50%;
+    line-height: 12px;
+    background-color: grey;
     vertical-align: middle;
-    padding: 0px;
 }
 
 form div.flex_item_1 {
@@ -35,7 +35,6 @@ form textarea {
     height: 200px;
     border-radius: 10px;
     box-sizing: border-box;
-
 }
 
 .results {
@@ -81,7 +80,70 @@ form textarea {
 }
 
 
-//------- NEW Project 05---- 
+//---------------- NEW Project 05---- 
+// ------------- Trip Container Elements - Grid Setup-------------
+.container_trip {
+        display: grid;
+        grid-template-columns: 10% 10% 15% 35% 10% 10% 10%;
+        grid-template-rows: auto 150px 150px auto; 
+        grid-template-areas: 
+              "trip_title trip_title trip_title trip_title trip_title trip_title trip_title"	
+              "trip_image trip_image trip_image trip_weather trip_notes trip_notes trip_notes"
+              "trip_image trip_image trip_image trip_weather trip_notes trip_notes trip_notes"
+              "trip_menu trip_menu trip_menu trip_menu trip_menu trip_menu trip_menu";
+      }
+
+.trip_title {
+    grid-area: trip_title;
+    padding: auto;
+
+    border: 1px;
+}
+.trip_image {
+    grid-area: trip_image;
+    background-color: lightsalmon;
+
+}
+
+.img_fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.trip_weather {
+    grid-area: trip_weather;
+    background-color: lightcyan;
+}
+.trip_notes {
+    grid-area: trip_notes;
+    background-color: lightcoral;
+}
+.trip_menu {
+    grid-area: trip_menu;
+
+}
+
+// ----- centering elements ---- 
+
+
+div.notes_title {
+    width: 100%;
+    padding: auto;
+    border: 1px black;
+
+}
+
+.middle {
+    margin: 15px;
+}
 
 .container {
     display: grid;
@@ -140,11 +202,15 @@ form textarea {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: center;
   }
   
   .flex_item_1 {
       flex-grow: 1;
-  }
+      border: 1px solid red;
+
+    }
   
   .flex_item_2 {
       flex-grow: 2;
@@ -165,9 +231,50 @@ div {
     background-color: lightblue;
 }
 
+.weather_current {
+    min-height: 50%;
+    text-align: center;
+}
+
 .weather_forecast {
-    border-style: dotted;
-    border-color: red;
-    height: auto;
+    max-height: 50%;
     margin-top: 5px;
+    text-align: center;
+}
+
+//Buttons
+
+button {
+    font-size: 110%;
+    width: 150px;
+    padding: 10px;
+    font-weight: 800;
+}
+
+.button_container {
+    min-height: 75px;
+    position: relative;
+}
+
+.button {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//Weather Data
+
+.data {
+    min-height: 25px;
+    min-width: 75px;
+    align-content: center;
+    padding: 10px;
+}
+
+.id_box, .trip_id {
+    font-size: large;
+    font-weight: 700;
+    padding: 10px;
 }
