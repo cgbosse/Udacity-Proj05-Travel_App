@@ -141,12 +141,13 @@ let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
 // Function to create the newTrip object with its TripId
 function tripDatabase(apiJson) {
     
-    //Creating Note fields
-    apiJson.note.transport =" ";
-    apiJson.note.hotel =" ";
-    apiJson.note.other =" ";
+    //Creating Note property object and field properties for future storage of information.s
+    apiJson.note = {};
+    apiJson.note.transport = " ";
+    apiJson.note.hotel = " ";
+    apiJson.note.other = " ";
 
-    // Assigns a tripId and adds it to the server
+    // Assigns a tripId and adds it to the server database (This is the step that I would like to create on the client side)
     tripId = (tripId + 1); 
     savedTrips[tripId.toString()] = apiJson;
     let newTrip = {};
