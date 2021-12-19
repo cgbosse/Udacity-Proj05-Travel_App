@@ -72,21 +72,21 @@
         <section id="" class="sec_trip">
             <section class="container_trip">
                 <div class="trip_title container_flex">
-                    <div class="trip_id">
+                    <div id="tripId" class="trip_id">
                         01
                     </div>                
                     <div class="flex_item_1" >
-                        <h2 class="destination">Trip to............... </h2>
+                        <h2 id="tripDest" class="destination">Trip to............... </h2>
                     </div>    
                     <div class="flex_item_1">
-                        <h2 class="date">27/07/2022 to 08/08/2022 </h2>
+                        <h2 id="tripDate" class="date">27/07/2022 to 08/08/2022 </h2>
                     </div>    
                     <div class="flex_item_1">
-                        <h2 class="days2go">Days away: 221</h2>
+                        <h2 id="daysAway" class="days2go">Days away: 221</h2>
                     </div>
                 </div>
-                
-                <div class="trip_image">
+                <!-- Image -->
+                <div id="tripImg" class="trip_image">
                     <img class="img_fit" src="https://pixabay.com/get/g4f8c9409b890b1a0d35be7721a03eb29ed3c36737875cb76374797af739cb145beaf78d763c0c3bd9af069e1c9b4c9c19a488b24aa19edd8d920383fd027f7cb_1280.jpg" alt="MADRID">
                 </div>
                 <!-- Weather Current -->
@@ -97,30 +97,17 @@
                         </div>   
                         <div class="container_flex">
                             <div class="flex_item_1">
-                                <h3>Low</h3>
-                                <div class="data">
+                                <h3>Temperature</h3>
+                                <div id="wCurTemp" class="data">
                                     16 celsius
                                 </div>
                             </div>    
                             <div class="flex_item_1">
-                                <h3>High</h3>
-                                <div class="data">
+                                <h3>Description</h3>
+                                <div id="wCurDesc" class="data">
                                     16 celsius
                                 </div>
-                            </div>
-                            <div class="flex_item_1">
-                                <h3>Rain</h3>
-                                <div class="data">
-                                    0%
-                                </div>
-                            </div>    
-                            <div class="flex_item_1">
-                                <h3>Snow</h3>
-                                <div class="data">
-                                    0%
-                                </div>
-                            </div>
-                          
+                            </div>        
                         </div>
                     </div>
                    <!-- Weather Forecast -->
@@ -129,29 +116,17 @@
                         <div>
                             <div class="container_flex">
                                 <div class="flex_item_1">
-                                    <h3>Low</h3>
-                                    <div class="data">
+                                    <h3>Temperature</h3>
+                                    <div id="wForLow" class="data">
                                         16 celsius
                                     </div>
                                 </div>    
                                 <div class="flex_item_1">
-                                    <h3>High</h3>
-                                    <div class="data">
+                                    <h3>Desc</h3>
+                                    <div id="wForHigh" class="data">
                                         16 celsius
                                     </div>
-                                </div>
-                                <div class="flex_item_1">
-                                    <h3>Rain</h3>
-                                    <div class="data">
-                                        0%
-                                    </div>
-                                </div>    
-                                <div class="flex_item_1">
-                                    <h3>Snow</h3>
-                                    <div class="data">
-                                        0%
-                                    </div>
-                                </div>    
+                                </div>  
                             </div>    
                         </div>    
                     </div>
@@ -163,15 +138,15 @@
                     </div>
                     <div class="middle">
                         <h3>Transport</h3>
-                        <textarea name="" id="" cols="" rows="3"></textarea>
+                        <textarea name="transport" id="noteTransport" cols="" rows="3"></textarea>
                     </div>
                     <div class="middle">
                         <h3>Hotel</h3>
-                        <textarea name="" id="" cols="" rows="3"></textarea>
+                        <textarea name="hotel" id="noteHotel" cols="" rows="3"></textarea>
                     </div>
                     <div class="middle">
                         <h3>Other</h3>
-                        <textarea name="" id="" cols="" rows="3"></textarea>
+                        <textarea name="other" id="noteOther" cols="" rows="3"></textarea>
                     </div>
                 </div>
             </section>

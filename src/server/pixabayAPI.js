@@ -30,7 +30,7 @@ let pixabayAPI= async function(comboJSON) {
 
         console.log("One possible pixabay image is: " + combinedApiResponseJSON.images.hits[0].largeImageURL);
         console.log(":::: combinedApiResponseJSON with pixabay data: " + combinedApiResponseJSON);
-
+        
         return combinedApiResponseJSON
 
     }  catch(error) {

@@ -2,13 +2,6 @@
 const dotenv = require('dotenv');
     dotenv.config();
 
-/*    
-var mcloudApi = {
-    application_key: process.env.API_KEY
-};
-*/
-
-
 // form-data & fetch - NPM package ... 
 var FormData = require('form-data');
 const fetch = require('node-fetch');
@@ -53,17 +46,6 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!');    
 })
 
-/*
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-    console.log("Sending Response from Server /test")
-})
-
-app.get('/testApi', function (req, res) {
-    res.send(mockAPIResponse)
-    console.log("Sending Response from Server /testApi")
-})
-*/
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------- Proj 05 ROUTES ----------------------
@@ -75,18 +57,29 @@ app.get('/combinedApiResponseJSON', function (req, res) {
     console.log("Sending Response from Server with the combinedApiResponseJSON object.")    
 });
 
-// PROJ 05---------- POST method route ---------- 
+// Route to test the savedTrips variable
+app.get('/savedTrips', function (req, res) {
+    res.send(savedTrips);
+    console.log("Sending Response from Server with the saveTrips object.")    
+});
+
+
+
+// ---------- POST method routes ---------- 
+// Route to generate a new saved trip calling all the apis
 app.post('/apiCalls', apiCalls);
+
+// Rout to consult/update or delete the savedTrips object 
+app.post('/savedTrips', apiCalls);
 
 // Proj 05 Code
 // :::::::::::::::::: API CALL FUNCTIONS :::::::::::::::::::::::
-/*
-// Setup empty JS objects to act storage variables for the original JSON responses
-let geonameJson = {};
-let weatherbitCurJson = {};
-let weatherbitForJson = {};
-let pixabayJson = {};
-*/
+
+// Setup empty JS object to act storage variable for all the savedTrips
+let savedTrips = {};
+// Setup of Trip ID variable for call storage
+let tripId = 0;
+
 // Setup empty object to store the information bits posted and passed back to the client side
 combinedApiResponseJSON = {};
 
@@ -106,42 +99,6 @@ let weatherbitAPIfor = require('./weatherbitAPIfor.js');
 // Import function from another js file in the same folder
 let pixabayAPI = require('./pixabayAPI.js');
 
-/*
-let pixabayAPI= async function(comboJSON) { 
-    
-    console.log(":::::::: Step 06  ::::::::");
-
-    // Assembling the Weatherbit URL using the longitude and latitude
-    console.log(":::::::: Step 06.1  ::::::::");
-    let destCity = comboJSON.destCity;
-    let destCountry = comboJSON.destCountry;
-            
-    let pbBaseURL = "https://pixabay.com/api/?key="  
-    let pixabayURL = pbBaseURL + process.env.PIXABAY_API_KEY + "&q=" + destCity + "+" + destCountry + "&image_type=photo" + "&orientation=horizontal" + "&category=travel" + "&min_width=600" + "&min_height=600" + "&order=popular" + "&per_page=3";
-
-    console.log(":::::::: Step 06.2  ::::::::");
-    console.log(pixabayURL);
-
-    const res = await fetch(pixabayURL);
-        
-    console.log(' ::::::: pixabayAPI image query - Response object: ' + res);
-    
-    try {
-        let apiData = await res.json();
-
-        combinedApiResponseJSON.images = apiData;
-
-        console.log("One possible pixabay image is: " + combinedApiResponseJSON.images.hits[0].largeImageURL);
-        console.log(":::: combinedApiResponseJSON with pixabay data: " + combinedApiResponseJSON);
-
-        return combinedApiResponseJSON
-
-    }  catch(error) {
-    // appropriately handle the error
-    console.log("error", error);
-    }
-};
-*/
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // --------------------------------APIC CALLS Sequence function caller-------------------------------------
@@ -169,6 +126,7 @@ function apiCalls (req, res) {
         .then(result => weatherbitAPIcur(result))
         .then(result => weatherbitAPIfor(result))
         .then(result => pixabayAPI(result))
+        .then(result => tripDatabase(result))
         .then(result => res.send(result))
                
 };
@@ -179,3 +137,19 @@ function apiCalls (req, res) {
 let d = new Date();
 let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
 
+
+// Function to create the newTrip object with its TripId
+function tripDatabase(apiJson) {
+    
+    //Creating Note fields
+    apiJson.note.transport =" ";
+    apiJson.note.hotel =" ";
+    apiJson.note.other =" ";
+
+    // Assigns a tripId and adds it to the server
+    tripId = (tripId + 1); 
+    savedTrips[tripId.toString()] = apiJson;
+    let newTrip = {};
+    newTrip[tripId.toString()] = apiJson;
+    return newTrip
+};
