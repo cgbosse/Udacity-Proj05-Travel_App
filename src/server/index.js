@@ -42,8 +42,8 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!');    
+app.listen(5555, function () {
+    console.log('Example app listening on port 5555!');    
 })
 
 
@@ -133,10 +133,6 @@ function apiCalls (req, res) {
 
 
 // ------------------------- Code without purpose -----------------
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
-
 
 // Function to create the newTrip object with its TripId
 function tripDatabase(apiJson) {
@@ -154,3 +150,7 @@ function tripDatabase(apiJson) {
     newTrip[tripId.toString()] = apiJson;
     return newTrip
 };
+
+let d = new Date();
+let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
+    

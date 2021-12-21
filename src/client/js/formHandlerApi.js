@@ -32,15 +32,15 @@ function handleSubmitApi(event) {
   
   // Temp setup without content checker
   //Calls the postData function to post the form text to the server
-  Client.postData('http://localhost:8081/apiCalls', trip)
+  Client.postData('http://localhost:5555/apiCalls', trip)
     .then (result => {
       console.log(":::::::::: SERVER RESPONSE :::::::::::");
       console.log(result);
-      console.log(result.longitude); 
-      //Client.serverApiResults(result);
-      return "Finished"
+      return result
     })
-    .then (result => console.log(":::::::::Step 08 " + result + ":::::::::"));
+    .then (result => Client.fillTripOverview(result));
+    //.then (result => console.log(":::::::::Step 08 " + result + ":::::::::"))
+    
 
   /*
   // check what text was put into the form field
@@ -53,7 +53,7 @@ function handleSubmitApi(event) {
     let formTextJson = {formText};
       
     //Calls the postData function to post the form text to the server
-    Client.postData('http://localhost:8081/textToAnalyze', formTextJson)
+    Client.postData('http://localhost:5555/textToAnalyze', formTextJson)
        .then (result => {
           Client.serverApiResults(result);
           return "Finished"

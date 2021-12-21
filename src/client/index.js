@@ -1,8 +1,8 @@
 //import { contentCheck } from './js/contentChecker'
-import { postData } from './js/postData'
-//import { serverApiResults } from './js/results'
 import { handleSubmitApi } from './js/formHandlerApi'
-
+import { postData } from './js/postData'
+import { fillTripOverview } from './js/fillTripOverview'
+import { daysTillTrip } from './js/daysTillTrip'
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -13,14 +13,16 @@ import './styles/header.scss'
 //console.log(contentCheck);
 console.log(handleSubmitApi);
 console.log(postData);
-//console.log(serverApiResults);
+console.log(fillTripOverview);
+console.log(daysTillTrip);
 
 alert("I EXIST")
 console.log("CHANGE!!");
 
 export {
     //contentCheck,
-    //serverApiResults,
+    handleSubmitApi,
     postData,
-    handleSubmitApi
+    fillTripOverview,
+    daysTillTrip
     }
