@@ -38,7 +38,8 @@ function handleSubmitApi(event) {
       console.log(result);
       return result
     })
-    .then (result => Client.fillTripOverview(result));
+    .then (result => Client.fillTripOverview(result))
+    .then (result => Client.savedTripLog(result));
     //.then (result => console.log(":::::::::Step 08 " + result + ":::::::::"))
     
 

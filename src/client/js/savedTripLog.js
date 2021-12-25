@@ -1,4 +1,4 @@
-function savedTripLog() {
+function savedTripLog(dataJson) {
     //creates a new saved trip log in the saved trips section
     console.log("::::: Entering the savedTripLog function ::::::::");
     
@@ -26,66 +26,48 @@ function savedTripLog() {
     //Create a blank document fragment to append all new lines and then append this fragment as a saved trip
     let savedTripLogHtmlFrag = document.createDocumentFragment();
     
-    let divTripHolder = '<div id="' + id + '" class="trip_saved container_flex">';
-    let divTripId = '<div class="id_box">' + id + '</div>';
-    let divTripDesc = '<div class="flex_item_1"><h2>' + 'From ' + tripData.origCity + ' to ' + tripData.destCity + '</h2></div>';
-    let divTripDates = '<div class="flex_item_1"><h2>' + tripData.depDate + '</h2></div>';
-    let divTripDays = '<div class="flex_item_1"><h2>Days until departure: "' + days +'</h2></div>';
+    // let divTripHolder = '<div id="' + id + '" class="trip_saved container_flex">';
+    let divTripHolder = document.createElement('div');
+    divTripHolder.id = id;
+    divTripHolder.className = "trip_saved container_flex";
     
-    savedTripLogHtmlFrag.append(divTripHolder);
-    savedTripLogHtmlFrag.appendChild(divTripId);
-    savedTripLogHtmlFrag.appendChild(divTripDesc);
-    savedTripLogHtmlFrag.appendChild(divTripDates);
-    savedTripLogHtmlFrag.appendChild(divTripDays);
+    // let divTripId = '<div class="id_box">' + id + '</div>';
+    let divTripId = document.createElement('div');
+    divTripId.className = "id_box";
+    divTripId.innerHTML = "<h2>" + id + "</h2>";
 
-    document.getElementById("secSaved").append(savedTripLogHtmlFrag);
+    // let divTripDesc = '<div class="flex_item_1"><h2>' + 'From ' + tripData.origCity + ' to ' + tripData.destCity + '</h2></div>';
+    let divTripDesc = document.createElement('div');
+    divTripDesc.className = "flex_item_1";
+    divTripDesc.innerHTML = "<h2>" + "From " + tripData.origCity + " to " + tripData.destCity + "</h2>";	
     
-
-
-
-
-/*
-    // Update the individual Trip Overview Fields with the object's data properties
-    // Title
-    console.log("::::: creating the trip log  and adding it to the saved trip Section ::::::::");
-
-    document.getElementById("tripId").innerText = id;
-
-    document.getElementById("tripDest").innerHTML = "From " + tripData.origCity + " to " + tripData.destCity;
-    document.getElementById("tripDate").innerHTML =tripData.depDate;
-    document.getElementById("daysAway").innerHTML = "Days until departure: " + days;
-
-
-
-    // HTML code to generate the saved trips
-      
-                <div id="01" class="trip_saved container_flex">
-                    <div class="id_box">
-                        01
-                    </div>
-                    <div class="flex_item_1">
-                        <h2>Trip to............... </h2>
-                    </div>    
-                    <div class="flex_item_1">
-                        <h2>
-                            27/07/2022 to 08/08/2022 
-                        </h2>
-                    </div>    
-                    <div class="flex_item_1">
-                        <h2>
-                            Days away: 221
-                        </h2>
-                    </div>
-                </div>
-                <div class="newtrip"></div>
-    */
-
-
-
-
-
+    //let divTripDates = '<div class="flex_item_1"><h2>' + tripData.depDate + '</h2></div>';
+    let divTripDates = document.createElement('div');
+    divTripDates.className = "flex_item_1";
+    divTripDates.innerHTML = "<h2>" + tripData.depDate + "</h2>";	
     
+    //let divTripDays = '<div class="flex_item_1"><h2>Days until departure: "' + days +'</h2></div>';
+    let divTripDays = document.createElement('div');
+    divTripDays.className = "flex_item_1";
+    divTripDays.innerHTML = "<h2> Days until departure: " + days + "</h2>";
 
+    console.log(divTripHolder);
+    console.log(divTripId);
+    console.log(divTripDesc);
+    console.log(divTripDays);
+    
+    // Appending to divTripHolder	
+    divTripHolder.appendChild(divTripId);
+    divTripHolder.appendChild(divTripDesc);
+    divTripHolder.appendChild(divTripDates);
+    divTripHolder.appendChild(divTripDays);
+    
+    // Adding the divTripHolder to the document fragment
+    savedTripLogHtmlFrag.appendChild(divTripHolder);
+    
+    // Adding the fragment to the DOM
+    document.getElementById("secSaved").appendChild(savedTripLogHtmlFrag);
+    
 }
 
 

@@ -69,8 +69,16 @@ app.get('/savedTrips', function (req, res) {
 // Route to generate a new saved trip calling all the apis
 app.post('/apiCalls', apiCalls);
 
-// Rout to consult/update or delete the savedTrips object 
+// Route to consult/update or delete the savedTrips object 
 app.post('/savedTrips', apiCalls);
+
+// Route to consult/update or delete the savedTrips object 
+app.post('/update', updateSaved);
+
+// Route to consult/update or delete the savedTrips object 
+app.post('/delete', deleteSaved);
+
+
 
 // Proj 05 Code
 // :::::::::::::::::: API CALL FUNCTIONS :::::::::::::::::::::::
@@ -98,6 +106,7 @@ let weatherbitAPIfor = require('./weatherbitAPIfor.js');
 // --------------------------------PIXABAY-------------------------------------
 // Import function from another js file in the same folder
 let pixabayAPI = require('./pixabayAPI.js');
+const { Console } = require('console');
 
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -154,3 +163,60 @@ function tripDatabase(apiJson) {
 let d = new Date();
 let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
     
+// Functions to work on the SavedTrips object
+
+// Updating the note fields
+function updateSaved(req, res) {
+    console.log("::::::::: Inside updateSaved :::::::");
+    // Create an empty object
+    let update = {};
+    update = req.body;
+    
+    // Extract the Trip ID
+    let updateTripId  = update.tripId;
+    console.log("tripID: " + updateTripId);
+
+    console.log("::::::: Updating Saved Trip Object ::::::::");
+    console.log(savedTrips[updateTripId.toString()]);
+
+    savedTrips[updateTripId.toString()].note.transport = update.noteTransport;
+    console.log(savedTrips[updateTripId.toString()].note.transport);
+
+    savedTrips[updateTripId.toString()].note.hotel = update.noteHotel;
+    console.log(savedTrips[updateTripId.toString()].note.hotel);
+
+    savedTrips[updateTripId.toString()].note.other = update.noteOther;
+    console.log(savedTrips[updateTripId.toString()].note.other);
+
+    console.log(":::::: Updated Saved Trip ::::::::::");
+
+    let updatedTrip = {};
+    updatedTrip = savedTrips;  
+
+    res.send(updatedTrip);
+};
+
+
+// Deleting trip from database
+function deleteSaved(req, res){
+
+    let delTripId  = req.body.tripId;
+
+    delete savedTrips[delTripId.toString()];
+
+    console.log(":::::: Deleted Saved Trip ::::::::::");
+    console.log(savedTrips[delTripId.toString()]);
+
+    console.log("::::::::: OBJECT KEYS ::::::::::::::")
+    let firstObjectId = Object.keys(savedTrips)[0];
+
+    console.log(":::: RETURN THE FIRST OBJECT IN THE Data Base :::: ");
+    console.log(savedTrips[firstObjectId.toString()]);
+
+    let firstTrip = {};
+    firstTrip = savedTrips;
+
+    res.send(firstTrip) 
+};
+
+

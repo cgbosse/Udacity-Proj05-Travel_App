@@ -163,12 +163,12 @@
                 </div>
                 <div class="flex_item_1 button_container"> 
                     <div class="button">
-                        <button type="button">Update</button>
+                        <button type="button" onclick="return Client.updateTrip(event)" onsubmit="return Client.updateTrip(event)">Update</button>
                     </div>        
                 </div>
                 <div class="flex_item_1 button_container"> 
                     <div class="button">
-                        <button type="button">Delete Trip</button>
+                        <button type="button" onclick="return Client.delTrip(event)" onsubmit="return Client.delTrip(event)">Delete Trip</button>
                     </div>
                 </div>
             </section>
@@ -177,24 +177,6 @@
        <section id="secSaved" class="sec_saved">
         <div class="">
             <h2>SAVED TRIPS</h2>
-        </div>   
-        <div id="01" class="trip_saved container_flex">
-            <div class="id_box">
-                01
-            </div>
-            <div class="flex_item_1">
-                <h2>Trip to............... </h2>
-            </div>    
-            <div class="flex_item_1">
-                <h2>
-                    27/07/2022 to 08/08/2022 
-                </h2>
-            </div>    
-            <div class="flex_item_1">
-                <h2>
-                    Days away: 221
-                </h2>
-            </div>
         </div>
         <div class="newtrip"></div>
        </section>

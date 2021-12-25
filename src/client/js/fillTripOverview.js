@@ -52,9 +52,11 @@ function fillTripOverview(dataJson) {
 
     // Notes
     console.log("::::: Updating the note fields ::::::::");
-    document.getElementById("noteTransport").innerHTML =tripData.note.transport;
-    document.getElementById("noteHotel").innerHTML =tripData.note.hotel;
-    document.getElementById("noteOther").innerHTML =tripData.note.other;
+    document.getElementById("noteTransport").innerHTML = tripData.note.transport;
+    document.getElementById("noteHotel").innerHTML = tripData.note.hotel;
+    document.getElementById("noteOther").innerHTML = tripData.note.other;
+
+    return dataJson
 
 }
 
