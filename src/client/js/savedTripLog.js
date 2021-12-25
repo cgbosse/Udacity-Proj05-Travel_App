@@ -4,6 +4,7 @@ function savedTripLog(dataJson) {
     
     // Establish Trip ID object property
     let ids = Object.keys(dataJson);
+    console.log("::::: dataJson ::::::")
     console.log(dataJson);
     
     let id = ids[0].toString();
@@ -13,6 +14,8 @@ function savedTripLog(dataJson) {
     let tripData = {};
     tripData = dataJson[id.toString()];
 
+
+    console.log(":::: tripData ::::")
     console.log(tripData);
     console.log(id);
 

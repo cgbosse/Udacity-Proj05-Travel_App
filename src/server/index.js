@@ -125,6 +125,9 @@ function apiCalls (req, res) {
     // Assigning variables for each of the data elements required for the various API calls
     let destCityFD = combinedApiResponseJSON.destCity;
     let depDateFD = combinedApiResponseJSON.depDate;
+    
+    console.log(combinedApiResponseJSON.depDate);
+    
     let destDaysFD = combinedApiResponseJSON.destDays;
     console.log("combinedApiResponseJSON: " + destCityFD);
  
@@ -140,29 +143,33 @@ function apiCalls (req, res) {
                
 };
 
-
-// ------------------------- Code without purpose -----------------
-
 // Function to create the newTrip object with its TripId
 function tripDatabase(apiJson) {
     
+    console.log(":::::: ENTERING tripDatabase ::::::::")
+    console.log(combinedApiResponseJSON.depDate);
+
     //Creating Note property object and field properties for future storage of information.s
     apiJson.note = {};
-    apiJson.note.transport = " ";
-    apiJson.note.hotel = " ";
-    apiJson.note.other = " ";
+    apiJson.note.transport = "";
+    apiJson.note.hotel = "";
+    apiJson.note.other = "";
 
     // Assigns a tripId and adds it to the server database (This is the step that I would like to create on the client side)
     tripId = (tripId + 1); 
     savedTrips[tripId.toString()] = apiJson;
     let newTrip = {};
     newTrip[tripId.toString()] = apiJson;
+
+    console.log(newTrip);
     return newTrip
 };
 
+/*
 let d = new Date();
 let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
-    
+*/
+
 // Functions to work on the SavedTrips object
 
 // Updating the note fields
@@ -201,22 +208,75 @@ function updateSaved(req, res) {
 function deleteSaved(req, res){
 
     let delTripId  = req.body.tripId;
+    
+    // Create an empty response 
+    let emptyTrip = {
+        "00":{
+            "note":{
+                "transport":"",
+                "hotel":"",
+                "other":""   
+            },
+            "origCity":"None Selected",
+            "origCountry":"None Selected",
+            "destCity":"None Selected",
+            "destCountry":"None Selected",
+            "depDate":"None Selected",
+            "destDays":"None Selected",
+            "weather_cur":{
+                "data":[
+                    {
+                        "weather":{
+                            "description":"NA"
+                        },
+                        "temp":"NA"
+                    }
+                ]
+            },
+            "weather_for":{
+                "data":[
+                    {
+                    },
+                    {
+                        "high_temp": "NA",
+                        "weather":{
+                            "description":"NA"
+                        }
+                    }                    
+                ]
+            },
+            "images":{
+                "hits":[
+                    {
+                     "largeImageURL":" "
+                    }
+                ]
+            }
+        }
+    }; 
 
-    delete savedTrips[delTripId.toString()];
+   // console.log(":::::: OBJECT KEYS :::::" + Object.keys(savedTrips).length);
 
-    console.log(":::::: Deleted Saved Trip ::::::::::");
-    console.log(savedTrips[delTripId.toString()]);
+    if (Object.keys(savedTrips).length > 1) {
 
-    console.log("::::::::: OBJECT KEYS ::::::::::::::")
-    let firstObjectId = Object.keys(savedTrips)[0];
+        delete savedTrips[delTripId.toString()];
 
-    console.log(":::: RETURN THE FIRST OBJECT IN THE Data Base :::: ");
-    console.log(savedTrips[firstObjectId.toString()]);
+        console.log(":::::: Deleted Saved Trip ::::::::::");
+        console.log(savedTrips[delTripId.toString()]);
 
-    let firstTrip = {};
-    firstTrip = savedTrips;
+        console.log("::::::::: OBJECT KEYS ::::::::::::::")
+        let firstObjectId = Object.keys(savedTrips)[0];
 
-    res.send(firstTrip) 
+        console.log(":::: RETURN THE FIRST OBJECT IN THE Data Base :::: ");
+        console.log(savedTrips[firstObjectId.toString()]);
+
+        let firstTrip = {};
+        firstTrip = savedTrips;
+
+        res.send(firstTrip) 
+        } else {
+            res.send(emptyTrip)
+        }
 };
 
 

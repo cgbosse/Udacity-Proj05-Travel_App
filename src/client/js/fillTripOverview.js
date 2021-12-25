@@ -27,6 +27,8 @@ function fillTripOverview(dataJson) {
     // Title
     console.log("::::: Updating the Title ::::::::");
 
+    console.log("days till departure: " + days)
+
     document.getElementById("tripId").innerText = id;
 
     document.getElementById("tripDest").innerHTML = "From " + tripData.origCity + " to " + tripData.destCity;
@@ -46,15 +48,20 @@ function fillTripOverview(dataJson) {
     
     //Forecast
     console.log("::::: Updating the forecast weather ::::::::");
-    
-    document.getElementById("wForTemp").innerHTML = tripData.weather_for.data[days-1].high_temp + " Celsius";
-    document.getElementById("wForDesc").innerHTML = tripData.weather_for.data[days-1].weather.description;
 
+    if (tripData.depDate == "None Selected") {
+        document.getElementById("wForTemp").innerHTML = "NA";
+        document.getElementById("wForDesc").innerHTML = "NA";
+    } else if (days < 15) {
+        document.getElementById("wForTemp").innerHTML = tripData.weather_for.data[days-1].high_temp + " Celsius";
+        document.getElementById("wForDesc").innerHTML = tripData.weather_for.data[days-1].weather.description;
+    };
+    
     // Notes
     console.log("::::: Updating the note fields ::::::::");
-    document.getElementById("noteTransport").innerHTML = tripData.note.transport;
-    document.getElementById("noteHotel").innerHTML = tripData.note.hotel;
-    document.getElementById("noteOther").innerHTML = tripData.note.other;
+    document.getElementById("noteTransport").value = tripData.note.transport;
+    document.getElementById("noteHotel").value = tripData.note.hotel;
+    document.getElementById("noteOther").value = tripData.note.other;
 
     return dataJson
 
