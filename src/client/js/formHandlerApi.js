@@ -3,6 +3,12 @@ function handleSubmitApi(event) {
 
   console.log(":::::::::: Formhandler event triggered :::::::::::::");
 
+  // Formcheck
+  if (Client.formCheck() === false) {
+    return
+  };
+
+  // Create the trip object and properties
   let trip = {};
 
   let origCity = document.getElementsByName("orig_city")[0].value;

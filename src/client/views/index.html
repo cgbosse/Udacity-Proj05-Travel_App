@@ -19,7 +19,7 @@
                 <h1>TRAVEL PLANNER - PROJECT-05</h1>
             </div>
             <div id="navigation" class="flex_item_1">          
-                <div class="inlineflexnav">
+                <div class="container_flex">
                     <div class="flex_item_1">
                         <a href="https://www.udacity.com/">UDACITY</a>
                     </div>
@@ -35,30 +35,32 @@
                 <div class="container_flex">    
                     <div class="flex_item_1 box"> <h3>Origin</h3>
                         <div class ="input_field">
-                            <input form="input_form" name="orig_city" value="" onblur="onBlur()" type="text" id="orig_city" placeholder="Enter city of origin">
+                            <input form="input_form" name="orig_city" value="" onblur="" type="text" id="orig_city" placeholder="Enter city of origin">
                         </div>
                         <div class ="input_field">
-                            <input form="input_form" name="orig_country" value="" onblur="onBlur()" type="text" id="orig_country" placeholder="Enter country of origin">
+                            <input form="input_form" name="orig_country" value="" onblur="" type="text" id="orig_country" placeholder="Enter country of origin">
                         </div>
                     </div>
                     <div class="flex_item_1 box"> <h3>Destination</h3>
                         <div class ="input_field">
-                            <input form="input_form" name="dest_city" value="" onblur="onBlur()" type="text" id="dest_city" placeholder="Enter city of destination">
+                            <input form="input_form" name="dest_city" value="" onblur="" type="text" id="dest_city" placeholder="Enter city of destination">
                         </div>
                         <div class ="input_field">
-                            <input form="input_form" name="dest_country" value="" onblur="onBlur()" type="text" id="dest_country" placeholder="Enter country of destination">
+                            <input form="input_form" name="dest_country" value="" onblur="" type="text" id="dest_country" placeholder="Enter country of destination">
                         </div>
                     </div>
                     <div class="flex_item_1 box"> <h3>Dates & Days of Stay</h3>
                         <div class ="flex_item_1 input_field">
-                                <input form="input_form" name="dep_date" value="" onblur="onBlur()" type="date" id="dep_date" placeholder="Enter departure">
+                                <input form="input_form" name="dep_date" value="" onblur="" type="date" id="dep_date" placeholder="Enter departure">
                         </div>
                         <div class ="flex_item_1 input_field">
                                 <input type="number" name="dest_days" placeholder="Enter planned days">
                         </div>
                     </div>
-                    <div class="flex_item_1 box">  
-
+                    <div class="flex_item_1 button_container">  
+                        <div class="button">
+                            <button type="button" name="" onclick="return Client.clearForm(event)" onsubmit="return Client.clearForm(event)">Clear Form</button>
+                        </div>
                     </div>
                     <div class="flex_item_1 button_container"> 
                         <div class="button">
@@ -70,7 +72,7 @@
         </section>
 <!-- Section: Trip -->
         <section id="" class="sec_trip">
-            <div>
+            <div class="sec_title">
                 <h2>
                     TRIP OVERVIEW
                 </h2>
@@ -180,7 +182,7 @@
        </section>
 <!-- Section: Saved Trips --> 
        <section id="secSaved" class="sec_saved">
-        <div class="">
+        <div class="sec_title">
             <h2>SAVED TRIPS</h2>
         </div>
         <div class="newtrip"></div>
