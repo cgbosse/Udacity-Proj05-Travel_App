@@ -70,8 +70,12 @@ function savedTripLog(dataJson) {
     
     // Adding the fragment to the DOM
     document.getElementById("secSaved").appendChild(savedTripLogHtmlFrag);
-    
-}
 
+    // Adding eventlistener
+    document.getElementById(id).addEventListener("click", function(event) {
+        alert("Clicked: " + id);
+        Client.callTripLog(id);
+    }, false);
+}
 
 export { savedTripLog }

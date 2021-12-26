@@ -43,9 +43,14 @@ function fillTripOverview(dataJson) {
     console.log("::::: Updating the current weather ::::::::");
 
     //Current
-    document.getElementById("wCurTemp").innerHTML = tripData.weather_cur.data[0].temp + " Celsius";
-    document.getElementById("wCurDesc").innerHTML = tripData.weather_cur.data[0].weather.description;
+    if (id == "00") {
+        document.getElementById("wCurTemp").innerHTML = "NA";
+        document.getElementById("wCurDesc").innerHTML = "NA";
     
+    } else {
+        document.getElementById("wCurTemp").innerHTML = tripData.weather_cur.data[0].temp + " Celsius";
+        document.getElementById("wCurDesc").innerHTML = tripData.weather_cur.data[0].weather.description;
+    }
     //Forecast
     console.log("::::: Updating the forecast weather ::::::::");
 
@@ -55,6 +60,9 @@ function fillTripOverview(dataJson) {
     } else if (days < 15) {
         document.getElementById("wForTemp").innerHTML = tripData.weather_for.data[days-1].high_temp + " Celsius";
         document.getElementById("wForDesc").innerHTML = tripData.weather_for.data[days-1].weather.description;
+    } else if (days > 15) {
+        document.getElementById("wForTemp").innerHTML = "NA";
+        document.getElementById("wForDesc").innerHTML = "NA";
     };
     
     // Notes
@@ -66,34 +74,5 @@ function fillTripOverview(dataJson) {
     return dataJson
 
 }
-
-/*
-// Trip Overview ids
-
-// Title
-tripId
-tripDest
-tripDate
-daysAway
-
-// Image
-tripImg
-
-// Weather
-wCurLow
-wCurHigh
-wCurRain
-wCurSnow
-
-wForLow
-wForHigh
-wForRain
-wForSnow
-
-// Notes
-noteTransport
-noteHotel
-noteOther
-*/
 
 export { fillTripOverview }

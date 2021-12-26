@@ -31,8 +31,6 @@ app.use(cors());
 
 console.log(__dirname);
 
-const mockAPIResponse = require('./mockAPI.js');
-
 // ---------------------- ROUTES ----------------------
 
 app.get('/', function (req, res) {
@@ -70,7 +68,7 @@ app.get('/savedTrips', function (req, res) {
 app.post('/apiCalls', apiCalls);
 
 // Route to consult/update or delete the savedTrips object 
-app.post('/savedTrips', apiCalls);
+app.post('/savedTrips', consultTrip);
 
 // Route to consult/update or delete the savedTrips object 
 app.post('/update', updateSaved);
@@ -279,4 +277,22 @@ function deleteSaved(req, res){
         }
 };
 
+function consultTrip(req, res) {
+    console.log("::::::::: Inside consultTrip :::::::");
+    // Create an empty object
+    let tripLogId = {};
+    tripLogId = req.body;
+    
+    // Extract the Trip ID
+    let consultTripId  = tripLogId.tripId;
+    console.log("tripID: " + consultTripId);
 
+    // New object to store the single trip to send back to the client side
+    let consult = {};
+    consult[consultTripId.toString()] = savedTrips[consultTripId.toString()];
+
+    console.log(":::: consult object: ");
+    console.log(consult);
+    
+    res.send(consult);
+};

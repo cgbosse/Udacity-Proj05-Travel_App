@@ -7,6 +7,7 @@ import { savedTripLog } from './js/savedTripLog'
 import { updateTrip } from './js/updateTrip'
 import { delTrip } from './js/deleteTrip'
 import { clearForm } from './js/clearForm'
+import { callTripLog } from './js/callTripLog'
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -23,6 +24,7 @@ console.log(savedTripLog);
 console.log(updateTrip);
 console.log(delTrip);
 console.log(clearForm);
+console.log(callTripLog);
 
 alert("Travelplanner Active")
 console.log("Travelapp Initialized!!");
@@ -36,5 +38,6 @@ export {
     savedTripLog,
     updateTrip,
     delTrip,
-    clearForm
-    }
+    clearForm,
+    callTripLog
+}

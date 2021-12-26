@@ -1,28 +1,25 @@
-async function delTrip(event) {
+async function callTripLog(id) {
     event.preventDefault()
     
-    // Create an object to store the data to be posted and deld on the saved trip
-    let del = {};
+    // Create an object to store clicked logs id
+    let logId = {};
 
     // Obtain the tripId and send it to the server
-    del.tripId = document.getElementById("tripId").innerText;
-    console.log(del);
-
-    //Remove Trip Log
-    document.getElementById(document.getElementById("tripId").innerText).remove();
+    logId.tripId = id;
+    console.log(logId);
 
     // Posting del to the server
     console.log(":::::::::Step 01 :::::::::");
-    console.log(":::::::Inside deleteTrip posting app data::::::: ");
+    console.log(":::::::Inside logId posting app data::::::: ");
     
-    const response = await fetch('http://localhost:5555/delete', {
+    const response = await fetch('http://localhost:5555/savedTrips', {
           method: 'POST', 
           credentials: 'same-origin',
           headers: {
               'Content-Type': 'application/json',
           },
           // Body data type must match "Content-Type" header        
-          body: JSON.stringify(del), 
+          body: JSON.stringify(logId),
     });
     try {
       console.log(":::::::::Step 03 :::::::::");  
@@ -31,7 +28,6 @@ async function delTrip(event) {
       console.log(newData);
      
       console.log(':::::: Updating Trip Overview Data with First database object ::::::::: ' + newData);
-      
       Client.fillTripOverview(newData);
       return newData;
     } 
@@ -40,4 +36,4 @@ async function delTrip(event) {
     };
 }
 
-export { delTrip }
+export { callTripLog }
