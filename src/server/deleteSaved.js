@@ -1,5 +1,5 @@
 // Deleting trip from database
-let deleteSaved = function(req, res){
+function deleteSaved(req, res){
 
     let delTripId  = req.body.tripId;
     

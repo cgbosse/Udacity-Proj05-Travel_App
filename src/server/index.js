@@ -31,20 +31,6 @@ app.use(cors());
 
 console.log(__dirname);
 
-// ---------------------- ROUTES ----------------------
-
-app.get('/', function (req, res) {
-    //L2 Step 16
-    res.sendFile('dist/index.html')
-    //res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
-// designates what port the app will listen to for incoming requests
-app.listen(5555, function () {
-    console.log('Example app listening on port 5555!');    
-})
-
-
 // Proj 05 Code
 // :::::::::::::::::: API CALL FUNCTIONS :::::::::::::::::::::::
 
@@ -91,10 +77,8 @@ let deleteSaved = require('./deleteSaved.js');
 let consultTrip = require('./consultTrip.js');
 
 
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-// --------------------------------APIC CALLS Sequence function caller-------------------------------------
-//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 function apiCalls (req, res) {
 
@@ -149,6 +133,24 @@ function tripDatabase(apiJson) {
 };
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// --------------------------------APIC CALLS Sequence function caller-------------------------------------
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// ---------------------- Standard ROUTES ----------------------
+
+app.get('/', function (req, res) {
+    //L2 Step 16
+    res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
+})
+
+// designates what port the app will listen to for incoming requests
+app.listen(5555, function () {
+    console.log('Example app listening on port 5555!');    
+})
+
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // ---------------------- Proj 05 ROUTES ----------------------
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -171,13 +173,13 @@ app.get('/savedTrips', function (req, res) {
 app.post('/apiCalls', apiCalls);
 
 // Route to consult/update or delete the savedTrips object 
-app.post('/savedTrips', consultTrip);
-
-// Route to consult/update or delete the savedTrips object 
 app.post('/update', updateSaved);
 
 // Route to consult/update or delete the savedTrips object 
 app.post('/delete', deleteSaved);
+
+// Route to consult the savedTrips object 
+app.post('/savedTrips', consultTrip);
 
 
 

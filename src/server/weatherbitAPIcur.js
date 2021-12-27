@@ -1,5 +1,5 @@
 
-let weatherbitAPIcur= async function(comboJSON) { 
+async function weatherbitAPIcur(comboJSON) { 
     
     // Import node-fetch for fetch to work in nodejs
     const fetch = require('node-fetch');
@@ -37,4 +37,4 @@ let weatherbitAPIcur= async function(comboJSON) {
     }
 };
 
-module.exports = weatherbitAPIcur;
+module.exports = weatherbitAPIcur

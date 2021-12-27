@@ -1,7 +1,7 @@
 
 // --------------------------------PIXABAY-------------------------------------
 
-let pixabayAPI= async function(comboJSON) { 
+async function pixabayAPI(comboJSON) { 
     
     // Import node-fetch for fetch to work in nodejs
     const fetch = require('node-fetch');

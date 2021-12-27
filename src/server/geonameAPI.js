@@ -1,9 +1,9 @@
-
-
-let geonameAPI= async function(city) { 
+async function geonameAPI(city) { 
+    
     // Import node-fetch for fetch to work in nodejs
     const fetch = require('node-fetch');
-    
+
+
     let geonameURL ='http://api.geonames.org/searchJSON?q=';
     // geoname API function variables
     console.log(":::::::: Step 03.1  ::::::::");
@@ -19,7 +19,6 @@ let geonameAPI= async function(city) {
         
     console.log(' ::::::: geonameAPI - Response object: ' + res);
     
-    // 2. Extract the temperature from the obtained json object
     try {
         let apiData = await res.json();
         

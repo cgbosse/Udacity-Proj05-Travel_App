@@ -1,7 +1,7 @@
 
 //-------------- Weather Forecast 16 Days --------------
 
-let weatherbitAPIfor= async function(comboJSON) { 
+async function weatherbitAPIfor(comboJSON) { 
     
     // Import node-fetch for fetch to work in nodejs
     const fetch = require('node-fetch');
@@ -40,4 +40,3 @@ let weatherbitAPIfor= async function(comboJSON) {
 };
 
 module.exports = weatherbitAPIfor;
-

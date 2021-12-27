@@ -1,6 +1,6 @@
 
-// Updating the note fields
-let updateSaved = function(req, res) {
+// Updating the note field
+function updateSaved(req, res) {
     console.log("::::::::: Inside updateSaved :::::::");
     // Create an empty object
     let update = {};

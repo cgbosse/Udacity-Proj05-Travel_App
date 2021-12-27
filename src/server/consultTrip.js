@@ -1,10 +1,13 @@
 // Consulting a specific trip from when you click a link on the saved trip log on the client side
 
-let consultTrip = function (req, res) {
+function consultTrip(req, res) {
     console.log("::::::::: Inside consultTrip :::::::");
     // Create an empty object
     let tripLogId = {};
     tripLogId = req.body;
+    
+    console.log(req.body);
+    console.log(tripLogId);
     
     // Extract the Trip ID
     let consultTripId  = tripLogId.tripId;
@@ -21,4 +24,3 @@ let consultTrip = function (req, res) {
 };
 
 module.exports = consultTrip;
-
