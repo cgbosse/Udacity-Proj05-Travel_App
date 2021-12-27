@@ -40,21 +40,21 @@ The project should have a structure like the one shown below. All files shown mu
 
 ### Usability
 
--[] All features are usable across modern desktop and phone browsers.
--[] Ensure the HTML elements, eg. texts and buttons, are proportionate and readable in small screen devices.
+-[x] All features are usable across modern desktop and phone browsers.
+-[x] Ensure the HTML elements, eg. texts and buttons, are proportionate and readable in small screen devices.
 
 ### Styling
 
--[] Styling is set up in a logical way. 
--[] All interactive elements have hover states.
+-[x] Styling is set up in a logical way. 
+-[x] All interactive elements have hover states.
 
 ### HTML Structure
 
--[] HTML structure should be indented properly with classes and ID’s that make sense.
+-[x] HTML structure should be indented properly with classes and ID’s that make sense.
 
 ### Visual Design
 
--[] The design should clearly be different from the design used in projects 3 and 4.
+-[x] The design should clearly be different from the design used in projects 3 and 4.
 
 ## API and JS Integration
 
@@ -62,21 +62,21 @@ The project should have a structure like the one shown below. All files shown mu
 
 ### src > server > server.js
 
--[] server.js file should be taken directly from passed project 3 with the addition of added member: value pairs and the required API keys.
+-[x] server.js file should be taken directly from passed project 3 with the addition of added member: value pairs and the required API keys.
 
 ### index.js
 
--[] src > client > index.js
--[] At least one function should be imported.
+-[x] src > client > index.js
+-[x] At least one function should be imported.
 -[] At least one event listener should be imported.
 (styles referenced in html/css)
 
 ### app.js
 
--[] src > client > js > app.js
--[] There should be URLS and API Keys for at least 3 APIs, including Geonames, Weatherbit, and Pixabay. You can feel free to use more than 3 APIs.
--[] There should be a primary object with placeholder member value pairs.
--[] There should be a primary function that is exported to index.js (index.js file should import the functions from other files).
+-[x] src > client > js > app.js
+-[x] There should be URLS and API Keys for at least 3 APIs, including Geonames, Weatherbit, and Pixabay. You can feel free to use more than 3 APIs.
+-[x] There should be a primary object with placeholder member value pairs.
+-[x] There should be a primary function that is exported to index.js (index.js file should import the functions from other files).
 
 ## Documentation
 
@@ -84,7 +84,7 @@ The project should have a structure like the one shown below. All files shown mu
 
 ### README
 
--[] A README file is included detailing the app and all dependencies.
+-[x] A README file is included detailing the app and all dependencies.
 
 #### Other requirements
 
@@ -92,11 +92,11 @@ The project should have a structure like the one shown below. All files shown mu
 
 ### Comments
 
--[] Comments are present and effectively explain longer code procedure when necessary.
+-[x] Comments are present and effectively explain longer code procedure when necessary.
 
 ### Code Quality
 
--[] Code is formatted with consistent, logical, and easy-to-read formatting as described in the Udacity JavaScript Style Guide.
+-[x] Code is formatted with consistent, logical, and easy-to-read formatting as described in the Udacity JavaScript Style Guide.
 
 ## Suggestions to Make Your Project Stand Out!
 
@@ -108,7 +108,7 @@ At least one of these is required, but the rest are great additional ways to fur
 -[] Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
 -[] Allow user to add multiple destinations on the same trip.
 -[] Pull in weather for additional locations.
--[] Allow the user to add hotel and/or flight data.
+-[x] Allow the user to add hotel and/or flight data.
 -[] Multiple places to stay? Multiple flights?
 -[] Integrate the REST Countries API to pull in data for the country - being visited.
 -[] Allow the user to remove the trip.
@@ -117,6 +117,6 @@ At least one of these is required, but the rest are great additional ways to fur
 -[] Incorporate icons into forecast.
 -[] Allow user to Print their trip and/or export to PDF.
 -[] Allow the user to add a todo list and/or packing list for their trip.
--[] Allow the user to add additional trips (this may take some heavy reworking, but is worth the challenge).
+-[x] Allow the user to add additional trips (this may take some heavy reworking, but is worth the challenge).
 -[] Automatically sort additional trips by countdown.
 -[] Move expired trips to bottom/have their style change so it’s clear it’s expired.

@@ -18,6 +18,11 @@ input {
     font-size: 12px;
 }
 
+input:hover {
+    background-color: rgb(71, 163, 71); 
+}
+
+
 form div.flex_item_1 {
     min-width: 20%;
 
@@ -26,6 +31,10 @@ form div.flex_item_1 {
 form textarea { 
     width: 100%;
     box-sizing: border-box;
+}
+
+textarea:hover {
+    background-color: rgb(71, 163, 71);
 }
 
 //---------------- NEW Project 05---- 
@@ -223,6 +232,11 @@ button {
     font-weight: 700;
     border-radius: 5px;
 }
+
+button:hover {
+    background-color: rgb(71, 163, 71);
+}
+
 
 .button_container {
     min-height: 50px;

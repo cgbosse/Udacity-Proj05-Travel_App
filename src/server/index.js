@@ -45,44 +45,11 @@ app.listen(5555, function () {
 })
 
 
-//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-// ---------------------- Proj 05 ROUTES ----------------------
-//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-// Route to test the apicalls route
-app.get('/combinedApiResponseJSON', function (req, res) {
-    res.send(combinedApiResponseJSON);
-    console.log("Sending Response from Server with the combinedApiResponseJSON object.")    
-});
-
-// Route to test the savedTrips variable
-app.get('/savedTrips', function (req, res) {
-    res.send(savedTrips);
-    console.log("Sending Response from Server with the saveTrips object.")    
-});
-
-
-
-// ---------- POST method routes ---------- 
-// Route to generate a new saved trip calling all the apis
-app.post('/apiCalls', apiCalls);
-
-// Route to consult/update or delete the savedTrips object 
-app.post('/savedTrips', consultTrip);
-
-// Route to consult/update or delete the savedTrips object 
-app.post('/update', updateSaved);
-
-// Route to consult/update or delete the savedTrips object 
-app.post('/delete', deleteSaved);
-
-
-
 // Proj 05 Code
 // :::::::::::::::::: API CALL FUNCTIONS :::::::::::::::::::::::
 
 // Setup empty JS object to act storage variable for all the savedTrips
-let savedTrips = {};
+savedTrips = {};
 // Setup of Trip ID variable for call storage
 let tripId = 0;
 
@@ -104,7 +71,25 @@ let weatherbitAPIfor = require('./weatherbitAPIfor.js');
 // --------------------------------PIXABAY-------------------------------------
 // Import function from another js file in the same folder
 let pixabayAPI = require('./pixabayAPI.js');
+
 const { Console } = require('console');
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// Functions to work on the SavedTrips object
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// --------------------------------updateSaved-------------------------------------
+// Import function from another js file in the same folder
+let updateSaved = require('./updateSaved.js');
+
+// --------------------------------deleteSaved-------------------------------------
+// Import function from another js file in the same folder
+let deleteSaved = require('./deleteSaved.js');
+
+// --------------------------------consultTrip-------------------------------------
+// Import function from another js file in the same folder
+let consultTrip = require('./consultTrip.js');
+
 
 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -163,136 +148,37 @@ function tripDatabase(apiJson) {
     return newTrip
 };
 
-/*
-let d = new Date();
-let newDate = (1+ d.getMonth())+'.'+ d.getDate()+'.'+ d.getFullYear();
-*/
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ---------------------- Proj 05 ROUTES ----------------------
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-// Functions to work on the SavedTrips object
+// Route to test the apicalls route
+app.get('/combinedApiResponseJSON', function (req, res) {
+    res.send(combinedApiResponseJSON);
+    console.log("Sending Response from Server with the combinedApiResponseJSON object.")    
+});
 
-// Updating the note fields
-function updateSaved(req, res) {
-    console.log("::::::::: Inside updateSaved :::::::");
-    // Create an empty object
-    let update = {};
-    update = req.body;
-    
-    // Extract the Trip ID
-    let updateTripId  = update.tripId;
-    console.log("tripID: " + updateTripId);
-
-    console.log("::::::: Updating Saved Trip Object ::::::::");
-    console.log(savedTrips[updateTripId.toString()]);
-
-    savedTrips[updateTripId.toString()].note.transport = update.noteTransport;
-    console.log(savedTrips[updateTripId.toString()].note.transport);
-
-    savedTrips[updateTripId.toString()].note.hotel = update.noteHotel;
-    console.log(savedTrips[updateTripId.toString()].note.hotel);
-
-    savedTrips[updateTripId.toString()].note.other = update.noteOther;
-    console.log(savedTrips[updateTripId.toString()].note.other);
-
-    console.log(":::::: Updated Saved Trip ::::::::::");
-
-    let updatedTrip = {};
-    updatedTrip = savedTrips;  
-
-    res.send(updatedTrip);
-};
+// Route to test the savedTrips variable
+app.get('/savedTrips', function (req, res) {
+    res.send(savedTrips);
+    console.log("Sending Response from Server with the saveTrips object.")    
+});
 
 
-// Deleting trip from database
-function deleteSaved(req, res){
 
-    let delTripId  = req.body.tripId;
-    
-    // Create an empty response 
-    let emptyTrip = {
-        "00":{
-            "note":{
-                "transport":"",
-                "hotel":"",
-                "other":""   
-            },
-            "origCity":"None Selected",
-            "origCountry":"None Selected",
-            "destCity":"None Selected",
-            "destCountry":"None Selected",
-            "depDate":"None Selected",
-            "destDays":"None Selected",
-            "weather_cur":{
-                "data":[
-                    {
-                        "weather":{
-                            "description":"NA"
-                        },
-                        "temp":"NA"
-                    }
-                ]
-            },
-            "weather_for":{
-                "data":[
-                    {
-                    },
-                    {
-                        "high_temp": "NA",
-                        "weather":{
-                            "description":"NA"
-                        }
-                    }                    
-                ]
-            },
-            "images":{
-                "hits":[
-                    {
-                     "largeImageURL":" "
-                    }
-                ]
-            }
-        }
-    }; 
+// ---------- POST method routes ---------- 
+// Route to generate a new saved trip calling all the apis
+app.post('/apiCalls', apiCalls);
 
-   // console.log(":::::: OBJECT KEYS :::::" + Object.keys(savedTrips).length);
+// Route to consult/update or delete the savedTrips object 
+app.post('/savedTrips', consultTrip);
 
-    if (Object.keys(savedTrips).length > 1) {
+// Route to consult/update or delete the savedTrips object 
+app.post('/update', updateSaved);
 
-        delete savedTrips[delTripId.toString()];
+// Route to consult/update or delete the savedTrips object 
+app.post('/delete', deleteSaved);
 
-        console.log(":::::: Deleted Saved Trip ::::::::::");
-        console.log(savedTrips[delTripId.toString()]);
 
-        console.log("::::::::: OBJECT KEYS ::::::::::::::")
-        let firstObjectId = Object.keys(savedTrips)[0];
 
-        console.log(":::: RETURN THE FIRST OBJECT IN THE Data Base :::: ");
-        console.log(savedTrips[firstObjectId.toString()]);
 
-        let firstTrip = {};
-        firstTrip = savedTrips;
-
-        res.send(firstTrip) 
-        } else {
-            res.send(emptyTrip)
-        }
-};
-
-function consultTrip(req, res) {
-    console.log("::::::::: Inside consultTrip :::::::");
-    // Create an empty object
-    let tripLogId = {};
-    tripLogId = req.body;
-    
-    // Extract the Trip ID
-    let consultTripId  = tripLogId.tripId;
-    console.log("tripID: " + consultTripId);
-
-    // New object to store the single trip to send back to the client side
-    let consult = {};
-    consult[consultTripId.toString()] = savedTrips[consultTripId.toString()];
-
-    console.log(":::: consult object: ");
-    console.log(consult);
-    
-    res.send(consult);
-};
