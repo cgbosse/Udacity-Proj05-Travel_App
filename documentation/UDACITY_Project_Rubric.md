@@ -26,9 +26,9 @@ The project should have a structure like the one shown below. All files shown mu
 
 ### Testing
 
--[] Check if Jest has been installed and npm run test script is implemented to run Jest.
--[] There should be at least one test for the express server.
--[] There should be at least one test for the application javascript client.
+-[x] Check if Jest has been installed and npm run test script is implemented to run Jest.
+-[x] There should be at least one test for the express server.
+-[x] There should be at least one test for the application javascript client.
 
 ### Offline capabilities
 

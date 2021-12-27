@@ -21,7 +21,7 @@ The goal of this project was get additional practice with:
 __Notes:__  
 
 - During the process of creating these I came to conclude that some of the previously generated code was not needed, so that will find some code that is not existant at later branches.  
-- In order to run the code you will require node version 11.15.0 and nvm version 1.1.8.
+- In order to run the code you will require node version **11.15.0** and nvm version **1.1.8**.
 - Also you will have to create a .env file with your API Keys for the different APIs.
 
 ## Available Documentation
@@ -51,5 +51,5 @@ Here you will find detailed information as to the steps and notes from the Udaci
 2. Understanding that I had to use the right node.js and npm versions.
 3. Understanding that I had to downgrade the different package versions of plugins and loaders and not just install the latest versions which are installed by default.
 4. Realizing that we did not have to follow exactly the boiler plate api fetch template from MeaningCloud.
-5. Learning to do testing.
-6. Incorporating new features.
+5. Learning to do basic testing.
+6. Incorporating new features, like creating a database and consult, update and deleting from it.
