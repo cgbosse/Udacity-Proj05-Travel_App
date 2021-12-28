@@ -26,7 +26,7 @@ console.log(delTrip);
 console.log(clearForm);
 console.log(callTripLog);
 
-alert("Travelplanner Active")
+//alert("Travelplanner Active")
 console.log("Travelapp Initialized!!");
 
 export {

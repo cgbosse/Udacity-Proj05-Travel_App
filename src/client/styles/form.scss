@@ -37,8 +37,9 @@ textarea:hover {
     background-color: rgb(162, 209, 162);
 }
 
-//---------------- NEW Project 05---- 
-// ------------- Trip Container Elements - Grid Setup-------------
+/* ---- NEW Project 05 ---- */
+/* ------------- Trip Container Elements - Grid Setup------------- */
+
 .container_trip {
         display: grid;
         grid-template-columns: 10% 10% 15% 35% 10% 10% 10%;
@@ -89,7 +90,7 @@ textarea {
     color: white;
 }
 
-// ----- centering elements ---- 
+/* ----- centering elements ---- */ 
 div.notes_title {
     width: 100%;
     color:black;
@@ -98,8 +99,10 @@ div.notes_title {
 .middle {
     margin: 0px 5px 5px 5px;
 }
-//  ----- Large Screen ----
-// ----- overall grid ---- 
+
+/*  ----- Large Screen ---- */
+/*  ----- overall grid ----*/
+
 .container {
     display: grid;
     grid-template-columns: 0% 20% 20% 10% 10% 10% 10% 10% 10% 0%;
@@ -158,7 +161,7 @@ div.notes_title {
       grid-area: footer;
   } 
   
-// Flex Elements
+/* --- Flex Elements --- */
 
   .container_flex {
       display: flex;
@@ -180,7 +183,7 @@ div.notes_title {
     width: 175px;
 }
 
-// weather 
+/* --- weather ---  */ 
 .weather_current {
     max-height: 50%;
     text-align: center;
@@ -207,7 +210,7 @@ div.notes_title {
     text-align: center;
 }
 
-//Weather Data
+/* --- Weather Data ---*/
 
 .data {
     min-height: 15px;
@@ -223,7 +226,7 @@ div.notes_title {
     font-weight: 700;
     padding: 5px;
 }
-//Buttons
+/* --- Buttons --*/
 
 button {
     font-size: 100%;
@@ -251,7 +254,7 @@ button:hover {
     transform: translate(-50%, -50%);
 }
 
-// Saved Trip Log
+/* --- Saved Trip Log --- */
 
 .trip_saved:hover {
     background-color: rgb(162, 209, 162);
@@ -260,7 +263,7 @@ button:hover {
 
 @media only screen and (max-width: 600px) {
 
-        //Buttons
+        /* --- Buttons --- */
         button {
             font-size: 80%;
             width: 100%;
@@ -282,7 +285,7 @@ button:hover {
             transform: translate(-50%, -50%);
         }
 
-        // Trip Overview Grid
+        /* --- Trip Overview Grid --- */
         .container_trip {
             display: grid;
             grid-template-columns: 10% 10% 15% 35% 10% 10% 10%;
